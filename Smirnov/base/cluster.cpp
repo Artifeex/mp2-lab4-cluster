@@ -21,11 +21,7 @@ void Cluster::UpdateQueueTasks()
 
 bool Cluster::CanExecuteTask()
 {
-	if (queueTasks.IsEmpty())
-	{
-		return false;
-	}
-	if (totalCpu - activeCpu >= queueTasks.GetElem().GetNeedCPU())
+	if (!queueTasks.IsEmpty() && totalCpu - activeCpu >= queueTasks.GetElem().GetNeedCPU())
 		return true;
 	else
 		return false;
